@@ -2,24 +2,45 @@
 
 int main(){
     char line[255];
-    FILE *file = fopen("text.txt", "r");
+    short hist = 1;    
+    FILE *file = fopen("base.txt", "r");
+
+    if(file == NULL){
+        printf("error, file dont have a text");
+        return 1;
+    }
+
+    while (fgets(line,sizeof(line),file) != NULL){
+        printf("%d:%s",hist, line);
+        hist ++;
+    }
     
-    // page number 1
-    fgets(line, 255, file);
-    printf("%s", line);
-    // page number 2
-    fgets(line, 255, file);
-    printf("%s", line);
-    // page number 3
-    fgets(line, 255, file);
-    printf("%s", line);
-    // page number 4
-    fgets(line, 255, file);
-    printf("%s", line);
+
+
+
+
+
+    // // page number 1
+    // if(fgets(line, 255, file) == NULL){
+    //     return 1;
+
+    // }
+    // // page number 2
+    // if(fgets(line, 255, file) == NULL){
+    //     return 1;
+    // }
+    // printf("page number 2: %s", line);
+    // // page number 3
+    // if(fgets(line, 255, file) == NULL){
+    //     return 1;
+    // }
+    // printf("page number 3: %s", line);
+    // // page number 4
+    // if(fgets(line, 255, file) == NULL){
+    //     return 1;
+    // }
+    // printf("page number 4: %s", line);    
 
     fclose(file);
-    file = fopen("text.txt", "a");
-    fprintf(file, "\nthis is page number 5");
-
     return 0;
 }
